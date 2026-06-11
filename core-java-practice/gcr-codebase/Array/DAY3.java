@@ -1,100 +1,80 @@
-public class ArraysPractice {
+import java.util.*;
+
+class Warehouse {
 
     public static void main(String[] args) {
 
-        int[] stock = {45, 20, 60, 20, 90, 15, 60};
+        int[] stock = {10, 20, 15, 20, 30, 10};
 
-        findMinMax(stock);
-        findTotalStock(stock);
+        // Max, Min, Total
+        int max = stock[0];
+        int min = stock[0];
+        int total = 0;
 
-        int target = 90;
-        int index = linearSearch(stock, target);
+        for (int num : stock) {
+            if (num > max) max = num;
+            if (num < min) min = num;
+            total += num;
+        }
 
-        if (index != -1)
-            System.out.println("Item found at index: " + index);
-        else
-            System.out.println("Item not found");
+        System.out.println("Max Stock: " + max);
+        System.out.println("Min Stock: " + min);
+        System.out.println("Total Stock: " + total);
 
-        findDuplicates(stock);
+        // Duplicate Detection
+        HashSet<Integer> set = new HashSet<>();
+        System.out.print("Duplicates: ");
 
-        int[] rotated = rotateArray(stock, 2);
-        System.out.println("Rotated Array: " + Arrays.toString(rotated));
+        for (int num : stock) {
+            if (!set.add(num)) {
+                System.out.print(num + " ");
+            }
+        }
 
+        // Rotate Array by k positions
+        int k = 2;
+        rotate(stock, k);
+
+        System.out.println("\nRotated Stock Array:");
+        System.out.println(Arrays.toString(stock));
+
+        // 2D Shelf Grid
         int[][] shelf = {
-                {1, 2, 3},
-                {4, 5, 6}
+            {1, 2, 3},
+            {4, 5, 6}
         };
 
-        transposeMatrix(shelf);
+        System.out.println("\nTranspose:");
+        transpose(shelf);
     }
 
-    public static void findMinMax(int[] arr) {
-        int min = arr[0];
-        int max = arr[0];
-
-        for (int num : arr) {
-            if (num < min) min = num;
-            if (num > max) max = num;
-        }
-
-        System.out.println("Minimum Stock: " + min);
-        System.out.println("Maximum Stock: " + max);
-    }
-
-    public static void findTotalStock(int[] arr) {
-        int sum = 0;
-        for (int num : arr) sum += num;
-        System.out.println("Total Stock: " + sum);
-    }
-
-    public static int linearSearch(int[] arr, int target) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) return i;
-        }
-        return -1;
-    }
-
-    public static void findDuplicates(int[] arr) {
-        System.out.println("Duplicate Elements:");
-        for (int i = 0; i < arr.length; i++) {
-            boolean alreadyPrinted = false;
-
-            for (int k = 0; k < i; k++) {
-                if (arr[i] == arr[k]) {
-                    alreadyPrinted = true;
-                    break;
-                }
-            }
-
-            if (alreadyPrinted) continue;
-
-            int count = 1;
-
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == arr[j]) count++;
-            }
-
-            if (count > 1)
-                System.out.println(arr[i] + " appears " + count + " times");
-        }
-    }
-
-    public static int[] rotateArray(int[] arr, int k) {
+    static void rotate(int[] arr, int k) {
         int n = arr.length;
-        int[] rotated = new int[n];
+        k = k % n;
 
-        for (int i = 0; i < n; i++) {
-            rotated[(i + k) % n] = arr[i];
-        }
-        return rotated;
+        reverse(arr, 0, n - 1);
+        reverse(arr, 0, k - 1);
+        reverse(arr, k, n - 1);
     }
 
-    public static void transposeMatrix(int[][] matrix) {
-        System.out.println("Transpose Matrix:");
+    static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
 
-        for (int col = 0; col < matrix[0].length; col++) {
-            for (int row = 0; row < matrix.length; row++) {
-                System.out.print(matrix[row][col] + " ");
+            start++;
+            end--;
+        }
+    }
+
+    static void transpose(int[][] matrix) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        for (int j = 0; j < cols; j++) {
+            for (int i = 0; i < rows; i++) {
+                System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
         }
