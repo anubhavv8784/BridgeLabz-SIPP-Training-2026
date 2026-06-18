@@ -8,7 +8,6 @@ class Solution {
                     + source + " to " + destination);
             return;
         }
-
         towerOfHanoi(n - 1, source, destination, auxiliary);
 
         System.out.println("Move disk " + n + " from "
@@ -21,3 +20,4 @@ class Solution {
         towerOfHanoi(3, 'A', 'B', 'C');
     }
 }
+
