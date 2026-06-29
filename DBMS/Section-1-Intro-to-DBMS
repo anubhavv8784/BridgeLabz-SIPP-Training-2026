@@ -1,0 +1,41 @@
+# Section 1 - Introduction to DBMS
+
+## Introduction to DBMS
+
+A **Database Management System (DBMS)** is software that is used to create, store, organize, retrieve, update, and manage data efficiently. It provides an interface between the user and the database, making it easy to access and manipulate data while ensuring security, consistency, and integrity.
+
+## Need of DBMS
+
+* Reduces data redundancy (duplicate data).
+* Provides data security.
+* Ensures data consistency.
+* Allows multiple users to access data simultaneously.
+* Makes data retrieval fast and efficient.
+* Supports backup and recovery of data.
+
+## Types of DBMS
+
+1. Hierarchical DBMS
+2. Network DBMS
+3. Relational DBMS (RDBMS)
+4. Object-Oriented DBMS (OODBMS)
+
+## RDBMS
+
+A Relational Database Management System (RDBMS) stores data in the form of tables consisting of rows and columns. It uses SQL (Structured Query Language) to manage and retrieve data.
+
+**Examples:** MySQL, Oracle, PostgreSQL, SQL Server.
+
+## Non-RDBMS
+
+Non-RDBMS (NoSQL) databases do not store data only in tables. They provide flexible data models such as documents, key-value pairs, graphs, or columns.
+
+**Examples:** MongoDB, Cassandra, Redis.
+
+## SQL
+
+SQL (Structured Query Language) is the standard language used to create, retrieve, update, and delete data in a relational database.
+
+## MySQL
+
+MySQL is an open-source Relational Database Management System (RDBMS) that uses SQL to manage databases. It is widely used for web applications because it is fast, reliable, and easy to use.
